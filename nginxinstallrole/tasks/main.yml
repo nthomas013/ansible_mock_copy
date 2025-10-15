@@ -1,0 +1,36 @@
+---
+# tasks file for nginxinstallrole
+- name: Installing nginx on the target machine
+  dnf:
+    name: "{{ service }}"
+    state: "{{ status }}"
+- name: Starting and enabling nginx service
+  service:
+    name: "{{ service }}"
+    enabled: "{{ enable }}"
+    state: started
+- name: Copying template from local to the remote machine
+  copy:
+    src: templatemo_579_cyborg_gaming
+    dest: /usr/share/nginx/html
+    owner: nginx
+    group: nginx
+  notify: restart nginx service  
+- name: Copying configuration files from local to remote machine
+  template:
+    src: nginxhosting.conf.j2
+    dest: /etc/nginx/conf.d/nginxhosting.conf
+  notify: restart nginx service
+- name: Ensure http is enabled in firewall
+  firewalld:
+    service: http
+    state: "{{ enable1 }}"
+    permanent: true
+    immediate: true
+- name: Change status in SElinux to permissive to allow content hosting
+  selinux:
+    policy: targeted
+    state: permissive
+- name: Debug module to print that the hosting has been successfully completed
+  debug:
+    msg: "{{ message }}"

@@ -1,0 +1,11 @@
+- name: Installing nginx, curl and git modules using inline list
+  hosts: VM2 
+  tasks: 
+    - name: Installing the modules using inline list
+      dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - nginx
+        - curl
+        - git    

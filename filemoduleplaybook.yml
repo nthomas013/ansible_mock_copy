@@ -1,0 +1,8 @@
+ - name: Using File module to create a test directory on target nodes
+   hosts: VM2
+   tasks:
+     - name: Using copy module to create the respective directory
+       file:
+         path: /tmp/testdir
+         state: directory
+         mode: 0755  

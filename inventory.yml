@@ -1,0 +1,14 @@
+all:
+  hosts:
+    VM2:
+      ansible_host: 172.16.99.233
+      ansible_user: nthomas
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: Nevin@123  
+    VM1:
+      ansible_host: 172.16.44.130
+      ansible_user: nthomas
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: Nevin@123  

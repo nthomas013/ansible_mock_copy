@@ -1,0 +1,16 @@
+ - name: Starting and enabling MySQL service
+   hosts: VM2
+   tasks:
+     - name: Installing MySQL service on the target node if not already installed
+       dnf:
+         name: mysql-server
+         state: present
+     - name: Installing additional module so that MySQL service functions correctly
+       dnf:
+         name: python3-PyMySQL
+         state: present
+     - name: Starting and enabling MySQL service
+       service:
+         name: mysqld
+         enabled: yes
+         state: started      

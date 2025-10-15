@@ -1,0 +1,15 @@
+ - name: Starting and enabling chrony service on Almalinux target node using conditions
+   hosts: VM2
+   tasks:  
+     - name: Installing chrony service if not already installed
+       dnf:
+         name: chrony
+         state: present
+     - name: Starting and enabling chrony service using conditions
+       service:
+         name: chronyd
+         enabled: yes
+         state: started
+       when:
+         - ansible_os_family == "RedHat"
+         - ansible_distribution_release == "Sage Margay"     

@@ -1,0 +1,7 @@
+---
+# vars file for nginxinstallrole
+service: nginx
+status: present
+enable: yes
+enable1: enabled
+message: "Nginx has been successfully hosted. You can open your browser to see the content using the IP address"  

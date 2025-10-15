@@ -1,0 +1,4 @@
+ - name: Running the nginx playbook using roles concept
+   hosts: VM2
+   roles:
+     - nginxinstallrole  

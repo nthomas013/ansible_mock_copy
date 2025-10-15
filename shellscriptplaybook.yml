@@ -1,0 +1,9 @@
+ - name: Using shell module to execute a bash script located at user directory on AlmaLinux target machine
+   hosts: VM2
+   tasks:
+     - name: Using shell module to execute the script
+       shell:
+         sh welcomescript.sh
+     - name: Using debug module to print the message that the script has been executed
+       debug:
+         msg: "The script has been executed successfully"     
